@@ -115,7 +115,7 @@ gulp.task('reload', function () {
 gulp.task('browser-sync', function () {
 	browserSync({
 		notify: false,
-		proxy: "localhost.print-tetau.jp"
+		proxy: "http://localhost.print.tetau.jp/"
 	});
 });
 
