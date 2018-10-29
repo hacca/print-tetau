@@ -1,18 +1,29 @@
 (function($) {
     $(function(){
 
+        //header fix
+        if($('#fixnav').length){
+            var nav = $('#fixnav');
+            var navheight = nav.height();
+            var navTop = nav.offset().top + navheight;
+            var showFlag = false;
+        }
+        $(window).scroll(function () {
+            var windowTop = $(this).scrollTop();
+            if (windowTop >= navTop) {
+                if (showFlag == false) {
+                    showFlag = true;
+                    nav.addClass('fixed');
+                }
+            } else if (windowTop < navTop) {
+                if (showFlag) {
+                    showFlag = false;
+                    nav.removeClass('fixed');
+                }
+            }
+        })
 
-
-
-  $(".md_header__search input").focus(function(){
-    $(this).parents().children(".icon_nav").addClass("hide");
-  }).blur(function(){
-    $(this).parents().children(".icon_nav").removeClass("hide");
-  });
-
-
-
-    //スムーズスクロール
+        //スムーズスクロール
         $('a[href^="#"]').click(function(){
             var speed = 600;
             var href= $(this).attr("href");
